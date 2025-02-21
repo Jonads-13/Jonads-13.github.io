@@ -19,16 +19,27 @@
     align-items: center;
     text-align: left;
 }
-  
+
+.light-mode{
+    .chip {
+        color: rgb(39, 40, 34) !important;
+        background-color: rgb(134, 12, 240) !important;
+    }
+}
+
+.dark-mode{
+    .chip{
+        color: rgb(39, 40, 34) !important;
+        background-color: rgb(12, 141, 240) !important;
+    }
+}
 .chip {
-    color: rgb(39, 40, 34) !important;
-    background-color: white !important;
     font-size: 0.8rem !important;
     height: 25px !important;
   
     span {
         font-family: 'Courier Prime', monospace;
-        color: rgb(39, 40, 34);
+        color: rgb(255, 255, 255);
     }
   
     svg {
