@@ -1,10 +1,10 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import OpenInNew from '@mui/icons-material/OpenInNew';
-import Button from '@mui/material/Button';
+import ContactPage from "@mui/icons-material/ContactPage";
 import '../assets/styles/Main.scss';
 import ProfilePic from '../assets/images/cicular_profile_picture.png'
+import Tooltip from "@mui/material/Tooltip";
 
 function Main() {
 
@@ -16,13 +16,17 @@ function Main() {
         </div>
         <div className="content">
           <div className="social_icons">
-            <a href="https://github.com/Jonads-13" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+            <Tooltip title='GitHub' placement="top">
+              <a href="https://github.com/Jonads-13" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+            </Tooltip>
 
-            <a href="https://www.linkedin.com/in/jacob-jonas-892095a8/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <Tooltip title="LinkedIn" placement="top">
+              <a href="https://www.linkedin.com/in/jacob-jonas-892095a8/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            </Tooltip>
 
-            <a href="https://drive.google.com/file/d/12ft-zX34m9PWXGawcdRJ5WJHwdb1zy6n/view?usp=sharing" target="_blank" rel="noreferrer">
-              <Button variant="contained" endIcon={<OpenInNew/>}>Resume</Button>
-            </a>
+            <Tooltip title="Resume" placement="top">
+              <a href="https://drive.google.com/file/d/12ft-zX34m9PWXGawcdRJ5WJHwdb1zy6n/view?usp=sharing" target="_blank" rel="noreferrer"><ContactPage/></a>
+            </Tooltip>
           </div>
           <h1>Jacob Jonas</h1>
           <p>Graduate Software Engineer</p>
