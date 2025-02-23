@@ -1,0 +1,104 @@
+/* Change colors in this file to style to your needs on a global level. 
+Certain colors are used for different and multiply types of elements. 
+For greater control over colors visit each components .scss file. */
+
+//color theme
+$primaryColor: #0c8df0;
+$secondaryColor: #f09c0c;
+$tertiaryColor: #EAC435;
+$darkTextColor: #0d1116;
+$darkTextSecondary: #7e748a;
+$lightTextColor: #D9D7DD;
+$lightTextSecondary: #E0DDE3;
+$darkBackground2: #3f3a45;
+
+
+// button colors
+$buttonColor: $primaryColor;
+$buttonHover: $secondaryColor; 
+$topButtonHover: $secondaryColor;
+
+// text colors light theme
+$titleColor: $darkTextColor;
+$textColor: $darkTextColor;
+$subTitle: $darkTextSecondary;
+$cardSubtitle: $darkTextSecondary;
+$talkCardSubTitle: $darkTextSecondary;
+$blogCardTitleColor: $darkTextSecondary;
+
+// text color dark theme
+$textColorDark: $lightTextColor;
+
+// toggle switch colors
+$toggleCheck: $secondaryColor;
+$toggleSwitchSliderBG: $lightTextColor;
+
+
+// light background colors
+$lightBackground1: $lightTextSecondary;
+$lightBackground2: $lightTextSecondary;
+$lightBackground3: $lightTextSecondary;
+$blogCardContainerColor: $lightTextSecondary;
+// dark background colors
+$darkBackground: $darkTextColor;
+//$darkBackground2: $darkTextSecondary;
+
+// light theme box shadows
+$lightBoxShadowDark: $darkTextColor;
+$lightBoxShadow: $darkTextSecondary;
+$lightBoxShadowDarker: $darkTextSecondary;
+
+// dark theme box shadows
+$darkBoxShadow: $secondaryColor;
+$darkBoxShadow2: $secondaryColor;
+
+// linear gradients
+$experienceCardBlurredDivLG: linear-gradient(
+  rgba(0, 0, 0, 0.4),
+  rgba(0, 0, 0, 0.2)
+);
+$experienceCardBannerLG: linear-gradient(
+  rgba(0, 0, 0, 0.7),
+  rgba(0, 0, 0, 0.5)
+);
+
+// borders
+$progressBarBackground: rgb(243, 239, 239);
+$lightBorder1: $primaryColor;
+$educationCardBorder: $secondaryColor;
+
+// hovers
+$achievementCertificateCardHoverDark: rgba(255, 255, 255, 0.2);
+$blogCardHoverSmallColor: rgba(255, 255, 255, 0.8);
+$headerHoverBG: #f4f4f4;
+$contactDetailHoverTS: #b5b5b5;
+
+// misc backgrounds
+$progressBarSpanBG: $secondaryColor;
+$iconBackground: $darkTextSecondary;
+$appHeaderBG: $darkTextColor;
+
+// misc colors
+$skillsColor: $primaryColor;
+$appLink: $secondaryColor;
+
+
+// githubRepo specific colors
+$githubRepoCardLanguageColorBG: #0000ff;
+$githubRepoCardColor: rgb(88, 96, 105);
+$githubRepoCardRepoCardStatsColor: rgb(106, 115, 125);
+$githubRepoCardRepoNameColor: rgb(36, 41, 46);
+$githubProfileCardLocationTS: #ffebcd;
+$githubProfileCardBorder: #6c63ff;
+
+// social media icons
+$faceBook: #3b5998;
+$linkedin: #0e76a8;
+$github: #333;
+$gitlab: #fca326;
+$google: #ea4335;
+$discord: #7289da;
+$medium: #000;
+$stackoverflow: #f48024;
+$instagram: #c13584;
+$kaggle: #20beff;
