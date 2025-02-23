@@ -34,7 +34,8 @@ function App() {
             <Expertise/>
             <Timeline/>
             <Project/>
-            <Contact/>
+            <Contact parentToChild={{mode}}/>
+            <Footer/>
         </FadeIn>
     </div>
     );
