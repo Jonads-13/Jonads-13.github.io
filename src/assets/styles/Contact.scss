@@ -9,17 +9,12 @@
 
   button {
     float: right;
-    background-color: white;
-    color: #050f0b;
-  }
-
-  button:hover {
-    background-color: #5000ca;
+    background-color: #0c8df0;
     color: white;
   }
 
-  fieldset {
-    background-color: white;
+  button:hover {
+    background-color: #f09c0c;
   }
 }
 
@@ -40,6 +35,28 @@ label {
 
 form {
   width: 100% !important;
+}
+
+.MuiTextField-root {
+  background-color: #151b23;
+  color: white;
+}
+
+.light-mode {
+  .MuiTextField-root {
+    background-color: #fcfeff;
+    color: #151b23;
+  }
+  .contact-form {
+
+    button {
+      background-color: #860cf0;
+    }
+
+    button:hover {
+      background-color: #f09c0c;
+    }
+  } 
 }
 
 .body-form {
