@@ -1,52 +1,114 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material';
+import { toast, ToastContainer } from 'react-toastify';  // Import Toastify
+import 'react-toastify/dist/ReactToastify.css';  // Import styles for toast
 
-function Contact() {
+const CustomTextField = styled(TextField) <{ mode: string }>(({ mode }) =>  ({
+  '& .MuiInputBase-input': {
+    color: mode === 'dark' ? 'white' : 'black'
+  },
+  '& .MuiInputLabel-root' : {
+    color: mode === 'dark' ? 'white': 'black'
+  },
+  '& .MuiOutlinedInput-root' :{
+    '&.Mui-focused fieldset': {
+      borderColor: mode === 'dark' ? '#0c8df0' : '#860cf0'
+    },
+  }
+}));
 
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+function Contact({parentToChild}: any) {
 
-  const [nameError, setNameError] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [messageError, setMessageError] = useState<boolean>(false);
+  const mode = parentToChild.mode;  
 
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
+
+  const [formData, setFormData] = useState({
+    from_name: '',
+    from_email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
 
   const sendEmail = (e: any) => {
     e.preventDefault();
 
-    setNameError(name === '');
-    setEmailError(email === '');
-    setMessageError(message === '');
+    console.log("we are trying to send");
 
-    /* Uncomment below if you want to enable the emailJS */
+    const newErrors = {
+      name: formData.from_name === '',
+      email: formData.from_email === '',
+      message: formData.message === '',
+    };
+    setErrors(newErrors);
 
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
+    if (newErrors.name || newErrors.email || newErrors.message) {
+      return; // Stop if there are validation errors
+    }
 
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
+    if (form.current) {
+      let toastId = toast.loading('Sending your message...', {
+        position: "bottom-center",
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+
+      emailjs.sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID ?? 'default_service_id',
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID ?? 'default_template_id',
+        form.current,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      ).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          toast.update(toastId, {
+            render: "Message Successfully Sent!",
+            type: "success",
+            position: "bottom-center",
+            isLoading: false,
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+          setFormData({ from_name: '', from_email: '', message: '' }); // Reset form
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          toast.update(toastId, {
+            render: 'Message failed to send!',
+            type: 'error',
+            position: "bottom-center",
+            isLoading: false,
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+      );
+    }
   };
 
   return (
@@ -54,7 +116,7 @@ function Contact() {
       <div className="items-container">
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
-          <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
+          <p>Looking to collaborate, or just chat? Feel free to drop a message.</p>
           <Box
             ref={form}
             component="form"
@@ -63,32 +125,32 @@ function Contact() {
             className='contact-form'
           >
             <div className='form-flex'>
-              <TextField
+              <CustomTextField
                 required
                 id="outlined-required"
                 label="Your Name"
                 placeholder="What's your name?"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                error={nameError}
-                helperText={nameError ? "Please enter your name" : ""}
+                name='from_name'
+                value={formData.from_name}
+                onChange={(e) => setFormData({ ...formData, from_name: e.target.value })}
+                error={errors.name}
+                helperText={errors.name ? 'Please enter your name' : ''}
+                mode={mode}
               />
-              <TextField
+              <CustomTextField
                 required
                 id="outlined-required"
                 label="Email / Phone"
                 placeholder="How can I reach you?"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
+                name='from_email'
+                value={formData.from_email}
+                onChange={(e) => setFormData({ ...formData, from_email: e.target.value })}
+                error={errors.email}
+                helperText={errors.email ? 'Please enter your email or phone number' : ''}
+                mode={mode}
               />
             </div>
-            <TextField
+            <CustomTextField
               required
               id="outlined-multiline-static"
               label="Message"
@@ -96,12 +158,12 @@ function Contact() {
               multiline
               rows={10}
               className="body-form"
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-              error={messageError}
-              helperText={messageError ? "Please enter the message" : ""}
+              name='message'
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              error={errors.message}
+              helperText={errors.message ? 'Please enter the message' : ''}
+              mode={mode}
             />
             <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
               Send
@@ -109,6 +171,7 @@ function Contact() {
           </Box>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }
