@@ -1,39 +1,28 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faWindows } from '@fortawesome/free-brands-svg-icons';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 
 const labelsWebDev = [
     "ASP.NET",
-    "C#",
     "React",
-    "JavaScript",
     "Flask",
-    "Python",
-    "SQL",
     "PostgreSQL",
     "MySQL",
-    "Postman",
     "Swagger"
 ];
 
 const labelsGameDev = [
-    "Unreal",
-    "Blueprints",
-    "Unity"
+    "Unreal Engine 5"
 ];
 
-const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+const labelsWindows = [
+    "WinForms",
+    "WPF",
+    "PostgreSQL"
 ];
 
 function Expertise() {
@@ -42,6 +31,18 @@ function Expertise() {
             <div className="skills-container">
                 <h1>Experience</h1>
                 <div className="skills-grid">
+                    <div className="skill">
+                        <FontAwesomeIcon icon={faWindows} size="3x"/>
+                        <h3>Windows Application Development</h3>
+                        <p>I have updated internal desktop applications to be more in line with company requirements and developed an application to help digitise company processes</p>
+                        <div className="flex-chips">
+                            <span className="chip-title">Relevant Skills:</span>
+                            {labelsWindows.map((label, index) => (
+                                <Chip key={index} className='chip' label={label} />
+                            ))}
+                        </div>
+                    </div>
+
                     <div className="skill">
                         <FontAwesomeIcon icon={faReact} size="3x"/>
                         <h3>Full Stack Web Development</h3>
@@ -65,18 +66,6 @@ function Expertise() {
                             ))}
                         </div>
                     </div>
-
-                    {/* <div className="skill">
-                        <FontAwesomeIcon icon={faPython} size="3x"/>
-                        <h3>GenAI & LLM</h3>
-                        <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
-                        <div className="flex-chips">
-                            <span className="chip-title">Relevant Skills:</span>
-                            {labelsThird.map((label, index) => (
-                                <Chip key={index} className='chip' label={label} />
-                            ))}
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
