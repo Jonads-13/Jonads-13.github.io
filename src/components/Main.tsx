@@ -25,7 +25,7 @@ function Main() {
             </Tooltip>
 
             <Tooltip title="Resume" placement="top">
-              <a href="https://drive.google.com/file/d/1amdgXqt5BqTHezSYQIUoIlf-mQwPdVt2/view?usp=sharing" target="_blank" rel="noreferrer"><ContactPage/></a>
+              <a href="https://drive.google.com/file/d/1n5-WdCo89cp-gaNcKY04AUViGPRmQUqz/view?usp=sharing" target="_blank" rel="noreferrer"><ContactPage/></a>
             </Tooltip>
           </div>
           <h1>Jacob Jonas</h1>
