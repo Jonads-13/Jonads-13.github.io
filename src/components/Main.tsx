@@ -29,7 +29,7 @@ function Main() {
             </Tooltip>
           </div>
           <h1>Jacob Jonas</h1>
-          <p>Graduate Software Engineer</p>
+          <p>Graduated Software Engineer</p>
 
           <div className="mobile_social_icons">
             <a href="https://github.com/jonads-13" target="_blank" rel="noreferrer"><GitHubIcon/></a>

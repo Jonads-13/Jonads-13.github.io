@@ -57,7 +57,7 @@ function Expertise() {
                     <div className="skill">
                         <FontAwesomeIcon icon={faGamepad} size="3x"/>
                         <h3>Video Game Development</h3>
-                        <p>I have been part of a team that has produced an immersiv, non-linear VR experience and a mobile action/adventure game for children to help them be curious about the world around them</p>
+                        <p>I have been part of a team that has produced an immersive, non-linear VR experience and a mobile action/adventure game for children to help them be curious about the world around them</p>
                         <div className="flex-chips">
                             <span className="chip-title">Relevant Skills:</span>
                             {labelsGameDev.map((label, index) => (
